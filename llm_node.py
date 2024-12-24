@@ -46,7 +46,7 @@ class LLMImageDescription:
             kwargs = {"api_key": api_key}
             if api_url:
                 kwargs["base_url"] = api_url
-            self._client = OpenAI(**kwargs)
+            self._client = OpenAI(api_key=api_key, base_url=api_url)
         return self._client
 
     @staticmethod
