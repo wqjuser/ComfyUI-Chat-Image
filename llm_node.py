@@ -19,11 +19,13 @@ class LLMImageDescription:
                 "model": (["gpt-4o", "claude-3-5-sonnet-20241022", "gemini-1.5-pro-latest", "gemini-2.0-flash-exp"],),
                 "api_url": ("STRING", {
                     "default": "",
-                    "multiline": False
+                    "multiline": False,
+                    "password": True
                 }),
                 "api_key": ("STRING", {
                     "default": "",
-                    "multiline": False
+                    "multiline": False,
+                    "password": True
                 }),
                 "prompt_template": ("STRING", {
                     "default": "Please describe this image in detail:",
