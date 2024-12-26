@@ -125,7 +125,6 @@ class LLMImageDescription:
                 api_url = api_urls.get(model, "")
 
             # Process using unified OpenAI SDK
-            print(f'args is api_url: {api_url},api_key: {api_key}')
             client = self.get_client(api_key, api_url)
             description = self.process_with_openai_compatible(prompt_template, base64_image, client, model)
 
