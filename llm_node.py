@@ -11,6 +11,8 @@ class LLMImageDescription:
         self.output_dir = "output"
         self.type = "output"
         self._client = None
+        self._current_api_key = None
+        self._current_api_url = None
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -42,11 +44,22 @@ class LLMImageDescription:
 
     def get_client(self, api_key, api_url=None):
         """Get or create OpenAI client"""
+        # 检查参数是否发生变化
+        if (self._client and
+                (self._current_api_key != api_key or
+                 self._current_api_url != api_url)):
+            # 参数变化，清除旧客户端
+            self._client = None
+
         if not self._client:
             kwargs = {"api_key": api_key}
             if api_url:
                 kwargs["base_url"] = api_url
-            self._client = OpenAI(api_key=api_key, base_url=api_url)
+            # 创建新客户端并保存当前参数
+            self._client = OpenAI(**kwargs)
+            self._current_api_key = api_key
+            self._current_api_url = api_url
+
         return self._client
 
     @staticmethod
