@@ -1,0 +1,15 @@
+[project]
+name = "comfyui-chat-image"
+description = "Use an online large language model to describe images."
+version = "1.0.0"
+license = {file = "LICENSE"}
+dependencies = ["openai", "numpy", "requests", "pillow"]
+
+[project.urls]
+Repository = "https://github.com/wqjuser/ComfyUI-Chat-Image"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-Chat-Image"
+Icon = ""
